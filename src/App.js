@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import MensageOut from './components/MensgOut.js';
+import MensageInput from './components/MensgInput.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const [mensaje, setmensaje] = useState(
+    [
+      { text: "Hola, Bienvenido a Chat 1.0", propietario: "Chat" },
+    ]
   );
-}
+
+  const agregarMensaje = (msg) => {
+    setmensaje([...mensaje, msg]);
+  };
+
+  return (
+    <>
+      <MensageOut mensajes={mensaje} />
+      <MensageInput agregarMensaje={agregarMensaje} />
+    </>
+  );
+};
 
 export default App;
+
